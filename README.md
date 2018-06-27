@@ -1,0 +1,2 @@
+# OpenGL
+Multiplatform OpenGL study
