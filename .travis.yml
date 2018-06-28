@@ -1,7 +1,3 @@
-git:
-  quiet: true
-  submodules: true
-
 language: cpp
 
 compiler:
