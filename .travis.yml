@@ -1,3 +1,6 @@
+git:
+  submodules: false
+
 language: cpp
 
 compiler:
@@ -15,6 +18,10 @@ matrix:
       osx_image: xcode9
     - os: osx
       osx_image: xcode8
+
+before_install:
+  - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
+  - git submodule update --init --recursive
 
 script:
   - cmake -H. -Bbuild
