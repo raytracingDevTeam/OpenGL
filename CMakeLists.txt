@@ -29,13 +29,14 @@ if (OpenGL_FOUND)
 endif()
 
 
-if (MSVC)
+find_package(glew)
+
+if (NOT GLEW_FOUND)
     set(GLEW_USE_STATIC_LIBS ON)
     set(glew-cmake_BUILD_SHARED OFF)
     add_subdirectory(ext/glew)
     include_directories(ext/glew/include)
 else()
-    find_package(glew REQUIRED)
     include_directories(${GLEW_INCLUDE_DIRS})
 endif()
 
