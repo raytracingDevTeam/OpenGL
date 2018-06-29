@@ -7,6 +7,8 @@ compiler:
   - gcc
   - clang
 
+
+
 matrix:
   include:
     - os: linux
@@ -22,6 +24,12 @@ matrix:
 before_install:
   - sed -i 's/git@github.com:/https:\/\/github.com\//' .gitmodules
   - git submodule update --init --recursive
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install -qq g++-7
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
 
 script:
   - cmake -H. -Bbuild
